@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}Purpose}{2}{section.1}
+\contentsline {section}{\numberline {2}MetaMap API's Underlying Architecture}{2}{section.2}
+\contentsline {section}{\numberline {3}Pre-requisites}{2}{section.3}
+\contentsline {section}{\numberline {4}Downloading, Extracting and Installing the API distribution}{2}{section.4}
+\contentsline {section}{\numberline {5}Using the MetaMap server}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Starting supporting servers}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Running the MetaMap server}{3}{subsection.5.2}
+\contentsline {section}{\numberline {6}Testing the API}{3}{section.6}
+\contentsline {section}{\numberline {7}Using the API}{6}{section.7}
+\contentsline {subsection}{\numberline {7.1}Instantiating the API}{6}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Setting MetaMap options}{6}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Performing a query using the api}{7}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Interrogating the result}{7}{subsection.7.4}
+\contentsline {subsubsection}{\numberline {7.4.1}Getting Acronyms and Abbreviations}{7}{subsubsection.7.4.1}
+\contentsline {subsubsection}{\numberline {7.4.2}Getting Negations}{8}{subsubsection.7.4.2}
+\contentsline {subsubsection}{\numberline {7.4.3}Getting Utterances and Associated Phrases, Candidates, and Mappings}{8}{subsubsection.7.4.3}
+\contentsline {subsection}{\numberline {7.5}Getting Raw MetaMap Machine Output}{10}{subsection.7.5}
+\contentsline {section}{\numberline {8}Advanced Configuration}{10}{section.8}
+\contentsline {subsection}{\numberline {8.1}Accepting the client connections from remote hosts}{10}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Running the MetaMap server on an alternate port}{10}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Specifying alternate MetaMap Server hosts and ports in the API}{11}{subsection.8.3}
+\contentsline {section}{\numberline {9}Notes for Maven Users}{11}{section.9}
+\contentsline {section}{\numberline {10}What is missing from the API}{11}{section.10}
+\contentsline {section}{\numberline {11}Possible enhancements}{11}{section.11}
+\contentsline {section}{\numberline {12}Differences compared to MMTx API}{11}{section.12}
+\contentsline {section}{\numberline {13}For more information}{11}{section.13}

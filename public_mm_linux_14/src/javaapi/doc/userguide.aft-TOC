@@ -1,0 +1,27 @@
+C--- AFT Table of Contents (auto generated)
+	* {-Purpose@Purpose-}
+	* {-MetaMap API's Underlying Architecture@MetaMap API's Underlying Architecture-}
+	* {-Pre-requisites@Pre-requisites-}
+	* {-Downloading, Extracting and Installing the API distribution@Downloading, Extracting and Installing the API distribution-}
+	* {-Using the MetaMap server@Using the MetaMap server-}
+		* {-Starting supporting servers@Starting supporting servers-}
+		* {-Running the MetaMap server@Running the MetaMap server-}
+	* {-Testing the API@Testing the API-}
+	* {-Using the API@Using the API-}
+		* {-Instantiating the API@Instantiating the API-}
+		* {-Setting MetaMap options@Setting MetaMap options-}
+		* {-Performing a query using the api@Performing a query using the api-}
+		* {-Interrogating the result@Interrogating the result-}
+			* {-Getting Acronyms and Abbreviations@Getting Acronyms and Abbreviations-}
+			* {-Getting Negations@Getting Negations-}
+			* {-Getting Utterances and Associated Phrases, Candidates, and Mappings@Getting Utterances and Associated Phrases, Candidates, and Mappings-}
+		* {-Getting Raw MetaMap Machine Output@Getting Raw MetaMap Machine Output-}
+	* {-Advanced Configuration@Advanced Configuration-}
+		* {-Accepting the client connections from remote hosts@Accepting the client connections from remote hosts-}
+		* {-Running the MetaMap server on an alternate port@Running the MetaMap server on an alternate port-}
+		* {-Specifying alternate MetaMap Server hosts and ports in the API@Specifying alternate MetaMap Server hosts and ports in the API-}
+	* {-Notes for Maven Users@Notes for Maven Users-}
+	* {-What is missing from the API@What is missing from the API-}
+	* {-Possible enhancements@Possible enhancements-}
+	* {-Differences compared to MMTx API@Differences compared to MMTx API-}
+	* {-For more information@For more information-}

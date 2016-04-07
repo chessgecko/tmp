@@ -1,0 +1,110 @@
+#!/bin/sh
+
+BASEDIR=@@basedir@@
+BINDIR=$BASEDIR/bin
+
+# fix for Berkeley DB shared library problem. 29oct2010 wjr
+ARCHITECTURE=`uname`
+
+case $ARCHITECTURE in
+    CYGWIN_NT*)
+	ARCHITECTURE=x86-win32-nt-4
+	export PATH=$PATH:$BASEDIR/lib:$BASEDIR/bin
+	;;
+    MINGW*)
+	ARCHITECTURE=x86-win32-nt-4
+	export PATH=$PATH:$BASEDIR/lib:$BASEDIR/bin
+	;;
+    Darwin*)
+	DYLD_LIBRARY_PATH=$BASEDIR/lib:${DYLD_LIBRARY_PATH}
+	export DYLD_LIBRARY_PATH
+	;;
+    *)
+	LD_LIBRARY_PATH=$BASEDIR/lib:${LD_LIBRARY_PATH}
+	export LD_LIBRARY_PATH
+	;;
+esac
+
+if [ -z $MMSERVER_PORT ] ; then
+   MMSERVER_PORT=8066
+fi
+export MMSERVER_PORT
+
+if [ -z $ACCEPTED_HOSTS] ; then
+    ACCEPTED_HOSTS="['127.0.0.1']"
+fi
+export ACCEPTED_HOSTS
+
+LEXICON_YEAR=2013
+DEFAULT_SHORT_YEAR=13
+DEFAULT_ARGS="-Z 2013AB"
+
+OVERRIDE_SHORT_YEAR=""
+
+# Everything on the command line is passed to the MetaMap binary
+USER_ARGS="--lexicon db $*"
+
+if [ -f $BASEDIR/lexicon/data/2013/lex_rec ]; then
+    USER_ARGS="--lexicon db $*"
+elif [ -f $BASEDIR/DB/DB.USAbase.2013AB.strict/lex_rec ]; then
+    USER_ARGS="--lexicon db $*"
+elif [ -f $BASEDIR/lexicon/data/lexiconStatic2013 ]; then
+    USER_ARGS="-L $LEXICON_YEAR --lexicon c $*"
+else 
+    echo "Could not find suitable lexicon, check installation!"
+fi
+
+
+# The idea of the logic below is to allow the user to override
+# the default value of 09 for the -Z flag.
+# This bit of hackery is necessary because MetaMap will complain
+# if any option is specified twice.
+
+while [ $# -gt 0 ]
+do
+    # echo \$1 = $1, \$2 = $2
+    # echo \$# = $#
+    # echo \$* = $*
+    case $1 in
+	-L)
+            echo "##### WARNING: Overriding lexicon year $LEXICON_YEAR with $2";
+	    LEXICON_YEAR=$2
+ 	    DEFAULT_ARGS="";
+	    USER_ARGS=""
+	    shift
+	    ;;
+        -Z) echo ""
+            echo "##### WARNING: Overriding data model $DEFAULT_SHORT_YEAR with $2";
+ 	    OVERRIDE_SHORT_YEAR=$2
+ 	    echo ""
+ 	    DEFAULT_ARGS="";
+	    USER_ARGS=""
+	    shift
+    esac
+    shift
+done
+
+if [ "$OVERRIDE_SHORT_YEAR" != "" ]
+then
+   DEFAULT_SHORT_YEAR=$OVERRIDE_SHORT_YEAR
+fi
+
+# Transform, e.g., 0708 to 08 and 0809 to 09
+case $DEFAULT_SHORT_YEAR in
+    [0-9][0-9][0-9][0-9]) DEFAULT_SHORT_YEAR=`echo $DEFAULT_SHORT_YEAR | cut -c3-4`
+esac
+
+if [ $DEFAULT_SHORT_YEAR -lt 50 ]
+then
+   CENTURY=20
+else
+   CENTURY=19
+fi
+
+FULL_YEAR=${CENTURY}${DEFAULT_SHORT_YEAR}
+
+COMMAND="$BINDIR/SKRrun.${DEFAULT_SHORT_YEAR} $BINDIR/mmserver13.BINARY.${ARCHITECTURE} $DEFAULT_ARGS $USER_ARGS"
+
+echo $COMMAND
+
+$COMMAND
